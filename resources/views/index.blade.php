@@ -5,15 +5,15 @@
 @section('content')
     <div class="w-full h-full relative">
         <section class="relative h-screen">
-            <header class="w-full py-5 bg-transparent z-[9999]  text-white fixed top-0">
+            <header id="header" class="w-full py-5 bg-transparent z-[9999]   fixed top-0">
                 <nav class="max-w-4xl flex mx-auto justify-between items-center">
                     <a href="/" class="text-4xl font-semibold"><span class="text-[#74512D]">umr🕋h</span>aja</a>
                     <ul class="flex gap-6 items-center text-sm">
                         <li>Beranda</li>
 
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-white flex items-center" type="button">Layanan<svg class="w-2.5 h-2.5 ms-3"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class=" flex items-center"
+                            type="button">Layanan<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m1 1 4 4 4-4" />
                             </svg>
@@ -25,11 +25,11 @@
                                 aria-labelledby="dropdownDefaultButton">
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Umrah</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:">Umrah</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Umrah
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:">Umrah
                                         + Trip</a>
                                 </li>
 
@@ -46,7 +46,7 @@
 
                             <!-- Modal toggle -->
                             <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-                                class="block border border-white rounded-full px-5 py-1 font-semibold" type="button">
+                                class="block border  rounded-full px-5 py-1 font-semibold" type="button">
                                 Login
                             </button>
 
@@ -59,11 +59,11 @@
                                         <!-- Modal header -->
                                         <div
                                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                            <h3 class="text-xl font-semibold text-gray-900 dark:">
                                                 🕋 Login <span class="text-[#74512D]">umrah</span>aja
                                             </h3>
                                             <button type="button"
-                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:"
                                                 data-modal-hide="default-modal">
                                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                     fill="none" viewBox="0 0 14 14">
@@ -222,7 +222,7 @@
                     data-aos-duration="1300" data-aos-delay="1000">
             </div>
             <div class="flex flex-col max-w-3xl px-8 ml-24">
-                <a href="/" class="text-xl font-semibold"><span class="text-[#74512D]">L🕋yanan</span></a>
+                <a href="/" class="text-xl font-semibold"><span class="text-[#74512D]">Keunggul🕋n</span></a>
                 <h1 class="text-4xl font-bold leading-none max-w-md" data-aos="fade-up" data-aos-duration="1000">
                     Menghadirkan paket umrah termurah dan terpercaya
                 </h1>
@@ -233,7 +233,7 @@
                     Umrahaja menyediakan perjalanan nyaman dan aman untuk pengalaman ibadah yang lebih khusyuk dan
                     berkesan.
                 </p>
-                <div class="flex flex-row gap-10 w-full items-center justify-evenly mt-10">
+                <div class="flex flex-row gap-5 w-full items-center justify-evenly mt-10">
                     <div class="text-3xl font-semibold flex flex-col items-center justify-center text-center"><span
                             class="text-[#74512D]">5+<p class="text-gray-700 max-w-2xl text-sm mt-3" data-aos="fade-up"
                                 data-aos-delay="500" data-aos-duration="700">
@@ -256,5 +256,150 @@
                 </div>
             </div>
         </section>
+
+        <section class="w-full h-fit relative flex flex-col items-center justify-between text-center">
+
+            <div class="flex flex-col  mx-auto px-8 max-w-3xl">
+                <a href="/" class="text-xl font-semibold"><span class="text-[#74512D]">L🕋yanan</span></a>
+                <h1 class="text-4xl font-bold leading-none " data-aos="fade-up" data-aos-duration="1000">
+                    Temukan Paket Terbaikmu
+                </h1>
+            </div>
+            <div class="w-full max-w-5xl mx-auto grid grid-cols-3 gap-5 mt-9">
+                <div class="shadow-custom bg-white rounded-lg">
+                    <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
+                        class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
+                    <div class="flex flex-col gap-2 text-left px-3 pb-4">
+                        <p class="text-xl font-semibold"><span class="text-gray-800">Umrah Gold
+                                Tripple</span></p>
+                        <div class="flex flex-row items-center justify-between -mt-2">
+                            <div class="text-base font-semibold"><span class="text-[#74512D]">Rp. 37.500.000</span></div>
+                            <div class="text-base font-semibold"><span class="text-[#74512D]"><i
+                                        class='bx bxs-paper-plane'></i>10 Days Umrah</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-custom bg-white rounded-lg">
+                    <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
+                        class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
+                    <div class="flex flex-col gap-2 text-left px-3 pb-4">
+                        <p class="text-xl font-semibold"><span class="text-gray-800">Umrah Gold
+                                Tripple</span></p>
+                        <div class="flex flex-row items-center justify-between -mt-2">
+                            <div class="text-base font-semibold"><span class="text-[#74512D]">Rp. 37.500.000</span></div>
+                            <div class="text-base font-semibold"><span class="text-[#74512D]"><i
+                                        class='bx bxs-paper-plane'></i>10 Days Umrah</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-custom bg-white rounded-lg">
+                    <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
+                        class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
+                    <div class="flex flex-col gap-2 text-left px-3 pb-4">
+                        <p class="text-xl font-semibold"><span class="text-gray-800">Umrah Gold
+                                Tripple</span></p>
+                        <div class="flex flex-row items-center justify-between -mt-2">
+                            <div class="text-base font-semibold"><span class="text-[#74512D]">Rp. 37.500.000</span></div>
+                            <div class="text-base font-semibold"><span class="text-[#74512D]"><i
+                                        class='bx bxs-paper-plane'></i>10 Days Umrah</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-custom bg-white rounded-lg">
+                    <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
+                        class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
+                    <div class="flex flex-col gap-2 text-left px-3 pb-4">
+                        <p class="text-xl font-semibold"><span class="text-gray-800">Umrah Gold
+                                Tripple</span></p>
+                        <div class="flex flex-row items-center justify-between -mt-2">
+                            <div class="text-base font-semibold"><span class="text-[#74512D]">Rp. 37.500.000</span></div>
+                            <div class="text-base font-semibold"><span class="text-[#74512D]"><i
+                                        class='bx bxs-paper-plane'></i>10 Days Umrah</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-custom bg-white rounded-lg">
+                    <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
+                        class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
+                    <div class="flex flex-col gap-2 text-left px-3 pb-4">
+                        <p class="text-xl font-semibold"><span class="text-gray-800">Umrah Gold
+                                Tripple</span></p>
+                        <div class="flex flex-row items-center justify-between -mt-2">
+                            <div class="text-base font-semibold"><span class="text-[#74512D]">Rp. 37.500.000</span></div>
+                            <div class="text-base font-semibold"><span class="text-[#74512D]"><i
+                                        class='bx bxs-paper-plane'></i>10 Days Umrah</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-custom bg-white rounded-lg">
+                    <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
+                        class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
+                    <div class="flex flex-col gap-2 text-left px-3 pb-4">
+                        <p class="text-xl font-semibold"><span class="text-gray-800">Umrah Gold
+                                Tripple</span></p>
+                        <div class="flex flex-row items-center justify-between -mt-2">
+                            <div class="text-base font-semibold"><span class="text-[#74512D]">Rp. 37.500.000</span></div>
+                            <div class="text-base font-semibold"><span class="text-[#74512D]"><i
+                                        class='bx bxs-paper-plane'></i>10 Days Umrah</span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <footer class="p-6 bg-[#543310] dark:text-gray-800 mt-12 !text-white">
+            <div class="max-w-4xl grid grid-cols-2 mx-auto gap-x-3 gap-y-8 py-10 sm:grid-cols-2 md:grid-cols-3">
+                <div class="flex flex-col space-y-4">
+                    <a href="/" class="text-4xl font-semibold"><span class="text-[#74512D]">umr🕋h</span>aja</a>
+                    <span class="mt-3">
+                        Nikmati kemudahan mencari paket umrah dengan Umrahaja. Dengan harga terjangkau dan layanan
+                        terpercaya
+                    </span>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <h2 class="font-medium">Core Concepts</h2>
+                    <div class="flex flex-col space-y-2 text-sm ">
+                        <a rel="noopener noreferrer" href="#">Utility-First</a>
+                        <a rel="noopener noreferrer" href="#">Responsive Design</a>
+                        <a rel="noopener noreferrer" href="#">Hover, Focus, &amp; Other States</a>
+                        <a rel="noopener noreferrer" href="#">Dark Mode</a>
+                        <a rel="noopener noreferrer" href="#">Adding Base Styles</a>
+                        <a rel="noopener noreferrer" href="#">Extracting Components</a>
+                        <a rel="noopener noreferrer" href="#">Adding New Utilities</a>
+                    </div>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <h2 class="font-medium">Customization</h2>
+                    <div class="flex flex-col space-y-2 text-sm ">
+                        <a rel="noopener noreferrer" href="#">Configuration</a>
+                        <a rel="noopener noreferrer" href="#">Theme Configuration</a>
+                        <a rel="noopener noreferrer" href="#">Breakpoints</a>
+                        <a rel="noopener noreferrer" href="#">Customizing Colors</a>
+                        <a rel="noopener noreferrer" href="#">Customizing Spacing</a>
+                        <a rel="noopener noreferrer" href="#">Configuring Variants</a>
+                        <a rel="noopener noreferrer" href="#">Plugins</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex items-center justify-center px-6 pt-12 text-sm">
+                <span class="">© Copyright 2024. All Rights Reserved.</span>
+            </div>
+        </footer>
     </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 0) {
+                header.classList.add('bg-white', 'shadow-custom', 'text-gray-800', 'duration-700',
+                    'border-gray-800');
+                header.classList.remove('text-white', 'border-white')
+            } else {
+                header.classList.remove('bg-white', 'shadow-custom', 'text-gray-800', 'border-gray-800');
+                header.classList.add('text-white', 'border-white')
+            }
+        });
+    </script>
 @endsection
