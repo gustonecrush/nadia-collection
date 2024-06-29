@@ -266,7 +266,7 @@
                 </h1>
             </div>
             <div class="w-full max-w-5xl mx-auto grid grid-cols-3 gap-5 mt-9">
-                <div class="shadow-custom bg-white rounded-lg">
+                <div class="shadow-custom bg-white rounded-lg cursor-pointer">
                     <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
                         class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
                     <div class="flex flex-col gap-2 text-left px-3 pb-4">
@@ -279,7 +279,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-custom bg-white rounded-lg">
+                <div class="shadow-custom bg-white rounded-lg cursor-pointer">
                     <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
                         class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
                     <div class="flex flex-col gap-2 text-left px-3 pb-4">
@@ -292,7 +292,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-custom bg-white rounded-lg">
+                <div class="shadow-custom bg-white rounded-lg cursor-pointer">
                     <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
                         class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
                     <div class="flex flex-col gap-2 text-left px-3 pb-4">
@@ -305,7 +305,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-custom bg-white rounded-lg">
+                <div class="shadow-custom bg-white rounded-lg cursor-pointer">
                     <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
                         class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
                     <div class="flex flex-col gap-2 text-left px-3 pb-4">
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-custom bg-white rounded-lg">
+                <div class="shadow-custom bg-white rounded-lg cursor-pointer">
                     <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
                         class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
                     <div class="flex flex-col gap-2 text-left px-3 pb-4">
@@ -331,7 +331,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-custom bg-white rounded-lg">
+                <div class="shadow-custom bg-white rounded-lg cursor-pointer">
                     <img src="{{ asset('assets/images/feature1.jpg') }}" alt=""
                         class="object-cover rounded-2xl bg-white p-3 w-full h-[200px]">
                     <div class="flex flex-col gap-2 text-left px-3 pb-4">
