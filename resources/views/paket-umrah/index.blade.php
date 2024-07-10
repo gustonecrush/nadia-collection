@@ -29,6 +29,7 @@
                     <tr>
                         <th scope="col" class="px-6 py-3">No</th>
                         <th scope="col" class="px-6 py-3">Nama Paket</th>
+                        <th scope="col" class="px-6 py-3">Harga Paket</th>
                         <th scope="col" class="px-6 py-3">Durasi Umrah</th>
                         <th scope="col" class="px-6 py-3">Hotel Mekah</th>
                         <th scope="col" class="px-6 py-3">Hotel Madinah</th>
@@ -41,6 +42,7 @@
                         <tr class="transition-all hover:bg-[#f9f9f9]">
                             <td class="px-6 py-4">{{ $index + 1 }}</td>
                             <td class="px-6 py-4">{{ $paketUmrah->nama_paket }}</td>
+                            <td class="px-6 py-4">{{ $paketUmrah->harga_paket }}</td>
                             <td class="px-6 py-4">{{ $paketUmrah->durasi_umrah }} Hari</td>
                             <td class="px-6 py-4">{{ $paketUmrah->hotelMekah->nama_hotel_mekah }}</td>
                             <td class="px-6 py-4">{{ $paketUmrah->hotelMadinah->nama_hotel_madinah }}</td>
@@ -171,6 +173,17 @@
                                     <div class="text-red-500">{{ $message }}</div>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="mb-4 w-full">
+                            <label for="bonus_paket"
+                                class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Harga
+                                Paket</label>
+                            <input type="text" id="harga_paket" name="harga_paket"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-[#543310] focus:outline-[#543310] focus:ring-[#543310] dark:text-white">
+                            @error('harga_paket')
+                                <div class="text-red-500">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-4 w-full">

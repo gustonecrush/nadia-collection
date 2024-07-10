@@ -32,6 +32,7 @@ class PaketUmrahController extends Controller
         $request->validate([
             'nama_paket' => 'required|string|max:255',
             'durasi_umrah' => 'required|string|max:255',
+            'harga_paket' => 'required|string|max:255',
             'id_hotel_mekah' => 'required|exists:hotel_mekahs,id',
             'id_hotel_madinah' => 'required|exists:hotel_madinahs,id',
             'bonus_paket' => 'required|string|max:255',

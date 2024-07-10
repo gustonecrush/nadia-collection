@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_paket');
             $table->string('durasi_umrah');
+            $table->string('harga_paket');
             $table->foreignId('id_hotel_mekah')->references('id')->on('hotel_mekahs');
             $table->foreignId('id_hotel_madinah')->references('id')->on('hotel_madinahs');
             $table->string('bonus_paket');
