@@ -41,16 +41,26 @@
                         <tr class="transition-all hover:bg-[#f9f9f9]">
                             <td class="px-6 py-4">{{ $index + 1 }}</td>
                             <td class="px-6 py-4">{{ $paketUmrah->nama_paket }}</td>
-                            <td class="px-6 py-4">{{ $paketUmrah->durasi_umrah }}</td>
+                            <td class="px-6 py-4">{{ $paketUmrah->durasi_umrah }} Hari</td>
                             <td class="px-6 py-4">{{ $paketUmrah->hotelMekah->nama_hotel_mekah }}</td>
                             <td class="px-6 py-4">{{ $paketUmrah->hotelMadinah->nama_hotel_madinah }}</td>
                             <td class="px-6 py-4">{{ $paketUmrah->pesawat->nama_pesawat }}</td>
-                            <td class="px-6 py-4">
-                                <button data-modal-target="edit-paket-modal-{{ $paketUmrah->id }}"
-                                    data-modal-toggle="edit-paket-modal-{{ $paketUmrah->id }}"
-                                    class="flex items-center justify-center px-3 py-1 text-xs text-white bg-[#543310] rounded-lg">
-                                    Edit
+                            <td class="px-6 py-4 flex gap-2">
+                                <button data-modal-target="edit-hotel-modal" data-modal-toggle="edit-hotel-modal"
+                                    data-hotel-id="{{ $paketUmrah->id }}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    <i class='bx bx-edit-alt'></i>Edit
                                 </button>
+                                <form action="{{ route('admin.paket-umrah.delete', $paketUmrah) }}" method="POST"
+                                    onsubmit="return confirm('Are you sure?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" value="{{ $paketUmrah->id }}" name="id">
+                                    <button type="submit"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                        <i class='bx bx-trash-alt'></i>Hapus
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

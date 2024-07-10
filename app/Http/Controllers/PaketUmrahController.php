@@ -14,7 +14,7 @@ class PaketUmrahController extends Controller
     {
         $paketUmrahs = PaketUmrah::with(['hotelMekah', 'hotelMadinah', 'pesawat'])->get();
         $pesawats = Pesawat::all();
-        $hotelMekahs = HotelMekah ::all();
+        $hotelMekahs = HotelMekah::all();
         $hotelMadinahs = HotelMadinah::all();
         return view('paket-umrah.index', compact('paketUmrahs', 'hotelMekahs', 'hotelMadinahs', 'pesawats'));
     }
@@ -72,9 +72,10 @@ class PaketUmrahController extends Controller
         return redirect()->route('admin.paket-umrah')->with('success', 'Paket Umrah updated successfully.');
     }
 
-    public function destroy(PaketUmrah $paketUmrah)
+    public function destroy(Request $request)
     {
+        $paketUmrah = PaketUmrah::where('id', '=', $request->id)->first();
         $paketUmrah->delete();
-        return redirect()->route('paket-umrah.index')->with('success', 'Paket Umrah deleted successfully.');
+        return redirect()->route('admin.paket-umrah')->with('success', 'Paket Umrah deleted successfully.');
     }
 }
