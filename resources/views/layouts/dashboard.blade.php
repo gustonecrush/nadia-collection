@@ -27,7 +27,7 @@
                     <div class="flex items-center justify-start rtl:justify-end">
                         <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
                             aria-controls="logo-sidebar" type="button"
-                            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200   ">
+                            class="inline-flex items-center p-2 text-sm text-primary rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200   ">
                             <span class="sr-only">Open sidebar</span>
                             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -36,10 +36,12 @@
                                 </path>
                             </svg>
                         </button>
-                        <a href="https://flowbite.com" class="flex ms-2 gap-3 md:me-24">
-                            <span class="text-2xl"> 🕋</span>
-                            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap ">Umrah
-                                Booking</span>
+                        <a href="/" class="flex ms-2 gap-3 md:me-24 items-center">
+                            <img src="{{ asset('assets/images/logo-nadia-collection.png') }}"
+                                class="h-12 w-12 rounded-full" alt="">
+                            <span
+                                class="self-center text-xl text-primary font-semibold sm:text-2xl whitespace-nowrap ">Nadia
+                                Collection</span>
                         </a>
                     </div>
                     <div class="flex items-center">
@@ -57,11 +59,12 @@
                             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow "
                                 id="dropdown-user">
                                 <div class="px-4 py-3" role="none">
-                                    <p class="text-sm text-gray-900 " role="none">
-                                        Neil Sims
+                                    <p class="text-sm text-gray-500 " role="none">
+                                        {{ Auth::guard('admin')->user()->name }} •
+                                        {{ Auth::guard('admin')->user()->role }}
                                     </p>
-                                    <p class="text-sm font-medium text-gray-900 truncate " role="none">
-                                        neil.sims@flowbite.com
+                                    <p class="text-sm font-medium text-gray-500 truncate " role="none">
+                                        {{ Auth::guard('admin')->user()->email }}
                                     </p>
                                 </div>
                                 <ul class="py-1" role="none">
@@ -70,20 +73,15 @@
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100   "
                                             role="menuitem">Dashboard</a>
                                     </li>
+
                                     <li>
-                                        <a href=""
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100   "
-                                            role="menuitem">Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100   "
-                                            role="menuitem">Earnings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100   "
-                                            role="menuitem">Sign out</a>
+                                        <form action="{{ route('admin.logout') }}" method="post">
+                                            @csrf
+                                            <button type="submit"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100   "
+                                                role="menuitem">Sign out</button>
+                                        </form>
+
                                     </li>
                                 </ul>
                             </div>
@@ -100,67 +98,63 @@
                 <ul class="space-y-2 font-medium">
                     <li>
                         <a href="{{ route('admin.dashboard') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
+                            class="flex items-center p-2 text-gray-500 rounded-lg  hover:bg-gray-100  group">
                             <i
-                                class='bx bx-grid-alt w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900  text-xl'></i>
+                                class='bx bxs-pie-chart-alt-2  w-5 h-5 text-primary transition duration-75    text-xl'></i>
+
 
                             <span class="ms-3">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.paket-umrah') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
+                        <a href="{{ route('admin.hasil-produksi') }}"
+                            class="flex items-center p-2 text-gray-500 rounded-lg  hover:bg-gray-100  group">
                             <i
-                                class='bx bx-package flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900 text-xl '></i>
+                                class='bx bx-shopping-bag flex-shrink-0 w-5 h-5 text-primary transition duration-75   text-xl '></i>
 
-                            <span class="flex-1 ms-3 whitespace-nowrap">Paket Umrah</span>
-                            <span
-                                class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full ">Pro</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.pesawat') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group ">
-                            <i
-                                class='bx bxs-plane-take-off flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900 text-xl '></i>
-
-                            <span class="flex-1 ms-3 whitespace-nowrap">Layanan Pesawat</span>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Hasil Produksi</span>
 
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.hotel-mekah') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                            <i
-                                class='bx bx-building-house flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900 text-xl '></i>
+                    @if (Auth::guard('admin')->user()->role == 'Admin')
+                        <li>
+                            <a href="{{ route('admin.bahan-mentah') }}"
+                                class="flex items-center p-2 text-gray-500 rounded-lg  hover:bg-gray-100  group ">
+                                <i
+                                    class='bx bxs-package flex-shrink-0 w-5 h-5 text-primary transition duration-75   text-xl '></i>
 
-                            <span class="flex-1 ms-3 whitespace-nowrap">Layanan Hotel Mekah</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.hotel-madinah') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                            <i
-                                class='bx bx-moon flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900 text-xl '></i>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Bahan Mentah</span>
 
-                            <span class="flex-1 ms-3 whitespace-nowrap">Layanan Hotel Madinah</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                            <i
-                                class='bx bx-user-circle flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75  group-hover:text-gray-900 text-xl '></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.supplier') }}"
+                                class="flex items-center p-2 text-gray-500 rounded-lg  hover:bg-gray-100  group">
+                                <i
+                                    class='bx bxs-truck flex-shrink-0 w-5 h-5 text-primary transition duration-75   text-xl '></i>
 
-                            <span class="flex-1 ms-3 whitespace-nowrap">User</span>
-                        </a>
-                    </li>
+
+                                <span class="flex-1 ms-3 whitespace-nowrap">Supplier</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#"
+                                class="flex items-center p-2 text-gray-500 rounded-lg  hover:bg-gray-100  group">
+                                <i
+                                    class='bx bx-user-circle flex-shrink-0 w-5 h-5 text-primary transition duration-75   text-xl '></i>
+
+                                <span class="flex-1 ms-3 whitespace-nowrap">User</span>
+                            </a>
+                        </li>
+                    @endif
+
 
                 </ul>
             </div>
         </aside>
 
-        <div class="p-4" style="margin-top: 50px !important; padding: 10vh;">
+        <div class="p-4" style="margin-top: 50px !important; padding: 10vh; margin-left: 28vh;">
             @yield('content')
         </div>
 

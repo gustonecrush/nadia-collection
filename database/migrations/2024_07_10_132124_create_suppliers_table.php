@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pesawats', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pesawat');
+            $table->string('nama');
+            $table->string('alamat');
+            $table->string('email');
+            $table->string('no_telpon');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pesawats');
+        Schema::dropIfExists('hotel_mekahs');
     }
 };

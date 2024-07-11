@@ -7,13 +7,9 @@
         <div
             class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-primary to-secondary i justify-around items-center hidden px-20">
             <div>
-                <h1 class="text-white font-bold text-4xl">Umrah Booking</h1>
-                <p class="text-white mt-1">Nikmati kemudahan mencari paket umrah dengan Umrahaja. Dengan harga terjangkau dan
-                    layanan terpercaya, Umrahaja menyediakan perjalanan nyaman dan aman untuk pengalaman ibadah yang lebih
-                    khusyuk dan berkesan.</p>
-                <a href="{{ route('index') }}"
-                    class="w-28 bg-white text-primary mt-4 py-2 rounded-2xl font-bold mb-2 flex items-center justify-center">Read
-                    More</a>
+                <h1 class="text-white font-bold text-4xl">Manpro Nadia Collection</h1>
+                <p class="text-white mt-1">Manajemen pengelolaan data produksi dan data mentah Nadia Collection</p>
+
             </div>
             <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
             <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
@@ -23,9 +19,9 @@
         <div class="flex w-2/3 px-20 justify-center py-10 items-center bg-white">
             <form method="POST" action="{{ route('admin.login') }}" class="bg-white w-full">
                 @csrf
-                <h1 class="text-gray-800 font-bold text-2xl mb-1">Selamat Datang di Panel Admin!</h1>
+                <h1 class="text-gray-800 font-bold text-2xl mb-1">Selamat Datang di Dashboard Manpro!</h1>
                 <p class="text-sm font-normal text-gray-600 mb-7">Masuk ke dashboard dan panel admin untuk melakukan
-                    manajemen paket umrah, dll</p>
+                    pengelolaan data produksi</p>
                 <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -34,7 +30,7 @@
                     </svg>
                     <input
                         class="pl-2 outline-none border-none rounded-2xl w-full focus:outline-none focus:border-none *:outline-none *:border-none"
-                        type="email" name="email" id="email" placeholder="Email Address" required />
+                        type="text" name="username" id="username" placeholder="Username" required />
                 </div>
                 <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -44,11 +40,11 @@
                             clip-rule="evenodd" />
                     </svg>
                     <input
-                        class="pl-2 outline-none border-none rounded-2xl w-full focus:outline-none focus:border-none *:outline-none border-none"
+                        class="pl-2 outline-none border-none rounded-2xl w-full focus:outline-none focus:border-none *:outline-none "
                         type="password" name="password" id="password" placeholder="Password" required />
                 </div>
                 <button type="submit"
-                    class="block w-full bg-secondary mt-4 py-3 rounded-2xl text-white font-semibold mb-2">Login</button>
+                    class="block w-full bg-primary mt-4 py-3 rounded-2xl text-white font-semibold mb-2">Login</button>
             </form>
         </div>
     </div>

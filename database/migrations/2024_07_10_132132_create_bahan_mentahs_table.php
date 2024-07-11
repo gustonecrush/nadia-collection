@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('bahan_mentahs', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email');
-            $table->string('password');
+            $table->foreignId('supplier_id')->constrained('suppliers', 'id');
+            $table->string('nama');
+            $table->string('kuantitas');
+            $table->string('satuan');
+            $table->string('harga');
+            $table->string('file_gambar');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('hotel_madinahs');
     }
 };

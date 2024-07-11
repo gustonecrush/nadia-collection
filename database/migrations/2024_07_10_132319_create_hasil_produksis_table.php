@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hotel_mekahs', function (Blueprint $table) {
+        Schema::create('hasil_produksis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_hotel_mekah');
+            $table->string('nama_produk');
+            $table->string('harga');
+            $table->string('tanggal_produksi');
+            $table->string('stok');
+            $table->foreignId('id_admin')->constrained('admins', 'id');
+            $table->string('file_foto_produk');
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hotel_mekahs');
+        Schema::dropIfExists('paket_umrahs');
     }
 };
