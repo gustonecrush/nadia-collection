@@ -1,5 +1,5 @@
 @extends('layouts.main', [
-    'title' => 'Login Admin - Layanan dan Pendaftaran Umrah PT Putri Cahaya Angkasa Jaya',
+    'title' => 'Login Admin - Manajemen Pengelolaan Data Produksi Nadia Collection',
 ])
 
 @section('content')
