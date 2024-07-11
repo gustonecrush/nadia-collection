@@ -18,12 +18,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Admin::create([
             'username' => 'admin',
             'email' => 'admin@gmail.com',
+            'role' => 'Admin',
+            'name' => 'Anggun',
             'password' => Hash::make('admin123')
         ]);
 
         \App\Models\Admin::create([
             'username' => 'koordinator',
             'email' => 'koordinator@gmail.com',
+            'role' => 'Koordinator',
+            'name' => 'Yasmin Putri',
             'password' => Hash::make('koordinator123')
         ]);
     }
