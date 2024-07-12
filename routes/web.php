@@ -10,6 +10,7 @@ use App\Http\Controllers\HotelMekahController;
 use App\Http\Controllers\PaketUmrahController;
 use App\Http\Controllers\PesawatController;
 use App\Http\Controllers\SupplierController;
+use App\Models\HasilProduksi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $hasilProduksis = HasilProduksi::all();
+    return view('index', compact('hasilProduksis'));
 })->name('index');
 
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
