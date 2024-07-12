@@ -116,6 +116,7 @@
 
                         </a>
                     </li>
+                    @dd(Auth::guard('admin')->user()->role)
                     @if (Auth::guard('admin')->user()->role == 'Admin')
                         <li>
                             <a href="{{ route('admin.bahan-mentah') }}"
