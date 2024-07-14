@@ -29,8 +29,18 @@ Route::get('/', function () {
     return view('index', compact('hasilProduksis'));
 })->name('index');
 
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/export/suppliers', [AdminDashboardController::class, 'exportSuppliers'])->name('admin.export.suppliers');
+Route::get('/admin/export/raw-materials', [AdminDashboardController::class, 'exportRawMaterials'])->name('admin.export.raw_materials');
+Route::get('/admin/export/production-results', [AdminDashboardController::class, 'exportProductionResults'])->name('admin.export.production_results');
+
+
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/dashboard/data', [AdminDashboardController::class, 'getData'])->name('admin.dashboard.data');
+Route::get('/admin/admins', [AdminDashboardController::class, 'index'])->name('admin.admins');
+Route::post('/admin/admins', [AdminDashboardController::class, 'store'])->name('admin.admins.store');
+Route::put('/admin/admins', [AdminDashboardController::class, 'update'])->name('admin.admins.update');
+Route::delete('/admin/admins', [AdminDashboardController::class, 'destroy'])->name('admin.admins.delete');
+
 
 Route::get('/admin/login', [AdminAuthController::class, 'index']);
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');

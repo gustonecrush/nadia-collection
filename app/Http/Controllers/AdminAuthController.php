@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminAuthController extends Controller
 {
@@ -84,29 +85,33 @@ class AdminAuthController extends Controller
     }
 
     // Update the specified resource in storage.
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'username' => 'required|unique:admins,username,' . $admin->id,
-            'name' => 'required',
-            'role' => 'required',
-            'email' => 'required|email|unique:admins,email,' . $admin->id,
-            'password' => 'nullable|min:6|confirmed',
+        $admin = Admin::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|max:255|unique:admins,username,' . $admin->id,
+            'name' => 'required|string|max:255',
+            'role' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:admins,email,' . $admin->id,
+            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        $admin->username = $request->username;
-        $admin->name = $request->name;
-        $admin->role = $request->role;
-        $admin->email = $request->email;
-
-        if ($request->password) {
-            $admin->password = Hash::make($request->password);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $admin->save();
+        $admin->update([
+            'username' => $request->username,
+            'name' => $request->name,
+            'role' => $request->role,
+            'email' => $request->email,
+            'password' => $request->filled('password') ? Hash::make($request->password) : $admin->password,
+        ]);
 
         return redirect()->route('admin.index')->with('success', 'Admin updated successfully.');
     }
+
 
     // Remove the specified resource from storage.
     public function destroy(Admin $admin)

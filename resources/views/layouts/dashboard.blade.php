@@ -116,7 +116,6 @@
 
                         </a>
                     </li>
-                    @dd(Auth::guard('admin')->user()->role)
                     @if (Auth::guard('admin')->user()->role == 'Admin')
                         <li>
                             <a href="{{ route('admin.bahan-mentah') }}"
@@ -140,7 +139,7 @@
                         </li>
 
                         <li>
-                            <a href="#"
+                            <a href="{{ route('admin.admins') }}"
                                 class="flex items-center p-2 text-gray-500 rounded-lg  hover:bg-gray-100  group">
                                 <i
                                     class='bx bx-user-circle flex-shrink-0 w-5 h-5 text-primary transition duration-75   text-xl '></i>
