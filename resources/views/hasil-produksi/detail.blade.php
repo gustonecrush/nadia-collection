@@ -43,11 +43,13 @@
                             <td class="px-6 py-4 flex gap-2">
 
 
-                                <form action="{{ route('admin.hasil-produksi.delete') }}" method="POST"
+                                <form action="{{ route('admin.bahan-hasil-produksi.delete') }}" method="POST"
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="hidden" value="{{ $hasilProduksi->id }}" name="id">
+                                    <input type="hidden" value="{{ $bahanHasilProduksi->id }}" name="id">
+                                    <input type="hidden" value="{{ $hasilProduksi->bahanMentah->id }}"
+                                        name="id_bahan_mentah">
                                     <button type="submit"
                                         class="font-medium text-red-600 dark:text-red-500 hover:underline">
                                         <i class='bx bx-trash-alt'></i>Hapus

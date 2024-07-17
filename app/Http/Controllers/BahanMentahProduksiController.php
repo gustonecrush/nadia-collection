@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BahanMentah;
 use App\Models\BahanMentahProduksi;
 use App\Models\HasilProduksi;
 use App\Models\Supplier;
@@ -31,9 +32,9 @@ class BahanMentahProduksiController extends Controller
     public function store(Request $request)
     {
         $bahanMentahProduksi = new BahanMentahProduksi();
-        $hasilProduksi = HasilProduksi::where('id', '=', $request->id_hasil_produksi)->first();
-        $hasilProduksi->stok = $hasilProduksi->stok - $request->kuantitas;
-        $hasilProduksi->save();
+        $bahanMentah = BahanMentah::where('id', '=', $request->id_bahan_mentah)->first();
+        $bahanMentah->stok = $bahanMentah->stok - $request->kuantitas;
+        $bahanMentah->save();
         $bahanMentahProduksi->id_hasil_produksi = $request->id_hasil_produksi;
         $bahanMentahProduksi->id_bahan_mentah = $request->id_bahan_mentah;
         $bahanMentahProduksi->kuantitas = $request->kuantitas;
@@ -73,11 +74,11 @@ class BahanMentahProduksiController extends Controller
     {
 
         $bahanProduksi = BahanMentahProduksi::findOrFail($request->id);
-        $hasilProduksi = HasilProduksi::where('id', '', $bahanProduksi->id_hasil_produksi);
-        $hasilProduksi->stok = $hasilProduksi->stok + $request->kuantitas;
-        $hasilProduksi->save();
+        $bahanMentah = BahanMentah::where('id', '', $request->id_bahan_mentah);
+        $bahanMentah->stok = $bahanMentah->kuantitas + $request->kuantitas;
+        $bahanMentah->save();
         $bahanProduksi->delete();
 
-        return redirect()->route('admin.hasil-produksi')->with('success', 'Hasil Produksi deleted successfully.');
+        return redirect()->back()->with('success', 'Bahan Hasil Produksi deleted successfully.');
     }
 }
