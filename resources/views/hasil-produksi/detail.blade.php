@@ -47,7 +47,7 @@
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="hidden" value="{{ $bahanHasilProduksi->id }}" name="id">
+                                    <input type="hidden" value="{{ $hasilProduksi->id }}" name="id">
                                     <input type="hidden" value="{{ $hasilProduksi->bahanMentah->id }}"
                                         name="id_bahan_mentah">
                                     <button type="submit"
