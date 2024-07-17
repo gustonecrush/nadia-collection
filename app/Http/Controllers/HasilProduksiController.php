@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BahanMentah;
+use App\Models\BahanMentahProduksi;
 use App\Models\HasilProduksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +15,14 @@ class HasilProduksiController extends Controller
     {
         $hasilProduksis = HasilProduksi::with('admin')->get();
         return view('hasil-produksi.index', compact('hasilProduksis'));
+    }
+
+    public function detail($id)
+    {
+        $hasilProduksi = HasilProduksi::where('id', '=', $id)->first();
+        $bahanMentahs = BahanMentah::with(['supplier'])->get();
+        $bahanHasilProduksi = BahanMentahProduksi::where('id_hasil_produksi', '=', $id)->with('bahanMentah')->get();
+        return view('hasil-produksi.detail', compact('bahanMentahs', 'hasilProduksi', 'bahanHasilProduksi'));
     }
 
     public function store(Request $request)

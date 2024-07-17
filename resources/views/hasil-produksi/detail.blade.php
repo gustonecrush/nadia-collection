@@ -1,12 +1,12 @@
 @extends('layouts.dashboard', [
-    'title' => 'Pengelolaan Hasil Produksi - Nadia Collection',
+    'title' => 'Pengelolaan Bahan Mentah Hasil Produksi - Nadia Collection',
 ])
 
 @section('content')
     <div class="flex flex-col gap-10">
         <div class="flex justify-between items-center mb-6">
             <div class="flex flex-col ">
-                <h1 class="text-2xl font-semibold">👕👚 Pengelolaan Data Hasil Produksi</h1>
+                <h1 class="text-2xl font-semibold">👕👚 Pengelolaan Data Bahan Mentah Hasil Produksi</h1>
                 <p class="text-gray-400 text-sm max-w-md">
                     Lakukan pengelolaan data hasil produksi untuk Nadia Collection.
                 </p>
@@ -27,43 +27,22 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">No</th>
-                        <th scope="col" class="px-6 py-3">Nama Produk</th>
-                        <th scope="col" class="px-6 py-3">Harga</th>
-                        <th scope="col" class="px-6 py-3">Tanggal Produksi</th>
-                        <th scope="col" class="px-6 py-3">Stok</th>
-                        <th scope="col" class="px-6 py-3">File Foto Produk</th>
-                        <th scope="col" class="px-6 py-3">Koordinator Produksi</th>
+                        <th scope="col" class="px-6 py-3">Nama Barang</th>
+                        <th scope="col" class="px-6 py-3">Kuantitas Penggunaan</th>
                         <th scope="col" class="px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach ($hasilProduksis as $index => $hasilProduksi)
+                    @foreach ($bahanHasilProduksi as $index => $hasilProduksi)
                         <tr class="transition-all hover:bg-[#f9f9f9]">
                             <td class="px-6 py-4">{{ $index + 1 }}</td>
-                            <td class="px-6 py-4">{{ $hasilProduksi->nama_produk }}</td>
-                            <td class="px-6 py-4">{{ number_format($hasilProduksi->harga, 0, ',', '.') }}</td>
-                            <td class="px-6 py-4">{{ $hasilProduksi->tanggal_produksi }}</td>
-                            <td class="px-6 py-4">{{ $hasilProduksi->stok }}</td>
-                            <td class="px-6 py-4">
-                                @if ($hasilProduksi->file_foto_produk)
-                                    <img src="{{ asset('storage/' . $hasilProduksi->file_foto_produk) }}" alt="Foto Produk"
-                                        class="w-16 h-16 object-cover">
-                                @else
-                                    Tidak ada gambar
-                                @endif
-                            </td>
-                            <td class="px-6 py-4">{{ $hasilProduksi->admin->name }} • {{ $hasilProduksi->admin->role }}</td>
+                            <td class="px-6 py-4">{{ $hasilProduksi->bahanMentah->nama }}</td>
+                            <td class="px-6 py-4">{{ $hasilProduksi->kuantitas }}</td>
+
+
                             <td class="px-6 py-4 flex gap-2">
 
-                                <a href='/admin/hasil-produksi/{{ $hasilProduksi->id }}'
-                                    class="font-medium text-gray-600 dark:text-gray-500 hover:underline">
-                                    <i class='bx bxl-dropbox'></i>Bahan Mentah
-                                </a>
-                                <button data-modal-target="edit-produksi-modal-{{ $hasilProduksi->id }}"
-                                    data-modal-toggle="edit-produksi-modal-{{ $hasilProduksi->id }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                    <i class='bx bx-edit'></i>Edit
-                                </button>
+
                                 <form action="{{ route('admin.hasil-produksi.delete') }}" method="POST"
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
@@ -152,8 +131,7 @@
                                                     <label for="stok_{{ $hasilProduksi->id }}"
                                                         class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Stok
                                                     </label>
-                                                    <input type="text" id="stok_{{ $hasilProduksi->id }}"
-                                                        name="stok"
+                                                    <input type="text" id="stok_{{ $hasilProduksi->id }}" name="stok"
                                                         class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-primary focus:outline-primary focus:ring-primary dark:text-white"
                                                         value="{{ $hasilProduksi->stok }}">
                                                     @error('stok')
@@ -211,63 +189,49 @@
                     </button>
                 </div>
                 <div class="p-6 space-y-6">
-                    <form action="{{ route('admin.hasil-produksi.store') }}" method="POST"
+                    <form action="{{ route('admin.bahan-hasil-produksi.store') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id_hasil_produksi" value={{ $hasilProduksi->id }}>
                         <div class="flex gap-2 w-full">
                             <div class="mb-4 w-full">
-                                <label for="nama_produk"
-                                    class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Nama Produk
+                                <label for="id_bahan_mentah"
+                                    class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Bahan Mentah
                                 </label>
-                                <input type="text" id="nama_produk" name="nama_produk"
+                                <select id="id_bahan_mentah" name="id_bahan_mentah"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-primary focus:outline-primary focus:ring-primary dark:text-white">
-                                @error('nama_produk')
+                                    <option value="">Pilih Bahan Mentah</option>
+                                    @foreach ($bahanMentahs as $bahanMentah)
+                                        <option value="{{ $bahanMentah->id }}">
+                                            <div class="flex flex-col gap-1">
+                                                <p>{{ $bahanMentah->nama }}</p>
+
+                                            </div>
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('id_bahan_mentah')
                                     <div class="text-red-500">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-4 w-full">
-                                <label for="harga"
-                                    class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Harga per Satuan
-                                </label>
-                                <input type="text" id="harga" name="harga"
-                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-primary focus:outline-primary focus:ring-primary dark:text-white">
-                                @error('harga')
-                                    <div class="text-red-500">{{ $message }}</div>
-                                @enderror
-                            </div>
+
+
                         </div>
 
                         <div class="flex gap-2 w-full">
-                            <div class="mb-4 w-full">
-                                <label for="tanggal_produksi"
-                                    class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Tanggal Produksi
-                                </label>
-                                <input type="date" id="tanggal_produksi" name="tanggal_produksi"
-                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-primary focus:outline-primary focus:ring-primary dark:text-white">
-                                @error('tanggal_produksi')
-                                    <div class="text-red-500">{{ $message }}</div>
-                                @enderror
-                            </div>
 
                             <div class="mb-4 w-full">
-                                <label for="stok"
-                                    class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Stok
+                                <label for="kuantitas"
+                                    class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">Kuantitas
                                 </label>
-                                <input type="text" id="stok" name="stok"
+                                <input type="integer" id="kuantitas" name="kuantitas"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-primary focus:outline-primary focus:ring-primary dark:text-white">
-                                @error('stok')
+                                @error('kuantitas')
                                     <div class="text-red-500">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-                        <div class="mb-4 w-full">
-                            <label for="file_foto_produk"
-                                class="block mb-2 font-medium text-gray-500 dark:text-white text-sm">File Foto Produk
-                            </label>
-                            <input type="file" id="file_foto_produk" name="file_foto_produk"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:border-primary focus:outline-primary focus:ring-primary dark:text-white">
 
-                        </div>
                         <div class="flex items-center justify-end">
                             <button type="submit"
                                 class="text-white bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary dark:hover:bg-primary dark:focus:ring-primary">Tambahkan
